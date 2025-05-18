@@ -1,0 +1,30 @@
+name: "suwayomi"
+
+services:
+    suwayomi:
+        image: ghcr.io/suwayomi/suwayomi-server:v2.0.1744
+        container_name: suwayomi
+        ports:
+            - "4567:4567"
+        volumes:
+            - ../suwayomi/downloads:/home/suwayomi/.local/share/Tachidesk/downloads
+            - ../suwayomi/files:/home/suwayomi/.local/share/Tachidesk
+        environment:
+            - TZ=Asia/Dhaka
+            - DOWNLOAD_AS_CBZ=true
+            - AUTO_DOWNLOAD_CHAPTERS=true
+            - EXTENSION_REPOS=["https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"]
+            - FLARESOLVERR_ENABLED=true
+            - FLARESOLVERR_URL=http://flaresolverr:8191/v1
+
+    flaresolverr:
+        image: ghcr.io/flaresolverr/flaresolverr:pr-1282
+        container_name: flaresolverr
+        environment:
+            - LOG_LEVEL=info
+            - CAPTCHA_SOLVER=none
+            - TZ=Asia/Dhaka
+        # ports:
+        #     - "8191:8191"
+        volumes:
+            - ../flaresolverr:/app/config

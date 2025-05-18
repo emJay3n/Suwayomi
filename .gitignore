@@ -1,0 +1,6 @@
+/suwayomi/*
+!/suwayomi/.gitkeep
+/flaresolverr/*
+!/flaresolverr/.gitkeep
+
+.DS_Store
