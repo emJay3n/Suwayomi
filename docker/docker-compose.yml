@@ -2,7 +2,7 @@ name: "suwayomi"
 
 services:
     suwayomi:
-        image: ghcr.io/suwayomi/suwayomi-server:v2.0.1744
+        image: ghcr.io/suwayomi/suwayomi-server:v2.0.1761
         container_name: suwayomi
         ports:
             - "4567:4567"
